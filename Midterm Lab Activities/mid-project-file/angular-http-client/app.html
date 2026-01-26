@@ -1,0 +1,33 @@
+<router-outlet />
+
+<div class="main-container">
+  <h1>List from Main</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of httpusers">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngFor="let recipe of recipes | slice:0:5">
+  <h3>{{ recipe.name }}</h3>
+  <p>Cuisine: {{ recipe.cuisine }}</p>
+  <p>Prep time: {{ recipe.prepTimeMinutes }} minutes</p>
+  <p>Servings: {{ recipe.servings }}</p>
+</div>
+
+
