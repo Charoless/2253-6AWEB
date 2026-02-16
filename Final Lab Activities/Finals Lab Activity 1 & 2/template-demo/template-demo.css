@@ -1,0 +1,122 @@
+/* Page background with mocha gradient */
+body {
+  background: linear-gradient(135deg, #4e342e, #6d4c41, #8d6e63); /* mocha tones */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #3e2723;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+
+  /* Flex centering */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form container */
+form {
+  width: 480px;
+  margin: auto;
+  padding: 2.5rem;
+  background: linear-gradient(145deg, #ffffff, #fdfdfd, #f5f2f0); /* soft white gradient */
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(30, 20, 15, 0.5);
+  border: 2px solid #8d6e63; /* mocha accent border */
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Title */
+p {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #3e2723; /* mocha text */
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+/* Input fields */
+.input-box {
+  width: 100%;
+  padding: 14px 16px;
+  margin: 12px 0;
+  border: 1.5px solid #d7ccc8;
+  border-radius: 10px;
+  font-size: 15px;
+  background: linear-gradient(135deg, #ffffff, #fdfdfd);
+  transition: all 0.3s ease;
+  color: #3e2723;
+}
+
+.input-box::placeholder {
+  color: #a1887f;
+}
+
+.input-box:focus {
+  border-color: #8d6e63;
+  box-shadow: 0 0 12px rgba(141, 110, 99, 0.4);
+  outline: none;
+  transform: scale(1.02);
+  background-color: #ffffff;
+}
+
+/* Labels */
+label {
+  font-weight: 600;
+  color: #5d4037; /* mocha accent */
+  margin-top: 12px;
+  display: block;
+}
+
+/* Radio buttons */
+input[type="radio"] {
+  margin-right: 6px;
+  accent-color: #6d4c41; /* mocha accent */
+}
+
+label input[type="radio"] {
+  margin-left: 12px;
+}
+
+/* Submit button */
+.btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #8d6e63, #6d4c41); /* mocha gradient */
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(109, 76, 65, 0.4);
+}
+
+.btn:disabled {
+  background-color: #c1c1c1;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Textarea */
+textarea.input-box {
+  resize: none;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
