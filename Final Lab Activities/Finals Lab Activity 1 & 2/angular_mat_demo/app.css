@@ -1,0 +1,30 @@
+/* App title styling */
+.app-title {
+  text-align: center;
+  margin: 30px 0;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #f39c12; /* warm gradient accent */
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.app-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #f39c12, #e67e22);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Dark mode for app title */
+.dark-theme .app-title {
+  color: #90caf9;
+}
+
+.dark-theme .app-title::after {
+  background: linear-gradient(90deg, #42a5f5, #1e88e5);
+}
