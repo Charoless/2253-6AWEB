@@ -1,0 +1,93 @@
+<div class="form-container">
+  <h1>Registration Form</h1>
+
+  <mat-slide-toggle (change)="toggleTheme()">Dark Mode</mat-slide-toggle>
+
+  <form [formGroup]="formData" (ngSubmit)="onClickSubmit()">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput type="text" formControlName="userName">
+      <mat-error *ngIf="formData.get('userName')?.hasError('required')">
+        Username is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+      <mat-error *ngIf="formData.get('email')?.hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="formData.get('email')?.hasError('email')">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-error *ngIf="formData.get('password')?.hasError('required')">
+        Password is required
+      </mat-error>
+      <mat-error *ngIf="formData.get('password')?.hasError('minlength')">
+        Password must be at least 8 characters long
+      </mat-error>
+      <mat-error *ngIf="formData.get('password')?.hasError('pattern')">
+        Password must start with a letter and contain only letters or numbers
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Address</mat-label>
+      <input matInput type="text" formControlName="address">
+      <mat-error *ngIf="formData.get('address')?.hasError('required')">
+        Address is required
+      </mat-error>
+    </mat-form-field>
+
+    <div class="radio-group">
+      <span class="radio-label">Gender</span>
+      <mat-radio-group formControlName="gender" class="gender-radio-group">
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Marital Status</mat-label>
+      <mat-select formControlName="maritalStatus">
+        <mat-option value="single">Single</mat-option>
+        <mat-option value="married">Married</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="slider-group">
+      <span class="slider-label">Angular Skill Level</span>
+      <mat-slider formControlName="angularSkillLevel" min="1" max="10" step="1" thumbLabel></mat-slider>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">Register</button>
+  </form>
+</div>
+
+<div *ngIf="submitted" class="submitted-summary">
+  <p>
+    You have entered: <br>
+    Username: {{ formData.value.userName }} <br>
+    Email: {{ formData.value.email }} <br>
+    Password: {{ formData.value.password }} <br>
+    Gender: {{ formData.value.gender }} <br>
+    Address: {{ formData.value.address }} <br>
+    Marital Status: {{ formData.value.maritalStatus }} <br>
+    Birth Date: {{ formData.value.birthDate | date:'shortDate' }} <br>
+    Angular Skill Level: {{ formData.value.angularSkillLevel }}
+  </p>
+</div>
