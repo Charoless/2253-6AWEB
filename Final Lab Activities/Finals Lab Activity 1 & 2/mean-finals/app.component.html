@@ -1,0 +1,43 @@
+<div class="container my-4">
+  <h2 class="text-center mb-4">📚 Books Application</h2>
+
+  <!-- Add Book Form -->
+  <div class="card p-4 shadow-sm mb-4">
+    <input id="newBook" placeholder="Title" class="form-control mb-2">
+    <input id="newDesc" placeholder="Description" class="form-control mb-2">
+    <input id="newPrice" placeholder="Book Price" class="form-control mb-2">
+    <input id="newAuthor" placeholder="Author" class="form-control mb-2">
+    <input id="newYear" placeholder="Published Year" class="form-control mb-2">
+
+    <button class="btn btn-primary w-100" (click)="addBook()">Add Book</button>
+  </div>
+
+  <!-- Edit Book Form -->
+  <div *ngIf="editingBook" class="card p-4 shadow-sm mb-4 bg-light">
+    <h5>Edit Book</h5>
+    <input id="editTitle" [value]="editingBook.title" placeholder="Title" class="form-control mb-2">
+    <input id="editDesc" [value]="editingBook.desc" placeholder="Description" class="form-control mb-2">
+    <input id="editPrice" [value]="editingBook.price" placeholder="Book Price" class="form-control mb-2">
+    <input id="editAuthor" [value]="editingBook.author" placeholder="Author" class="form-control mb-2">
+    <input id="editYear" [value]="editingBook.year" placeholder="Published Year" class="form-control mb-2">
+
+    <button class="btn btn-success me-2" (click)="updateBook()">Update</button>
+    <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+  </div>
+
+  <!-- Book List -->
+  @for (book of books; track book.id) {
+    <div class="card mb-3 p-3 shadow-sm">
+      <h5 class="card-title">{{ book.title }}</h5>
+      <p class="card-text">
+        {{ book.desc }} | 💵 {{ book.price }} | ✍️ {{ book.author }} | 📅 {{ book.year }}
+      </p>
+      <button class="btn btn-warning btn-sm me-2" (click)="editBook(book)">Edit</button>
+      <button class="btn btn-danger btn-sm" (click)="deleteBook(book.id)">Delete</button>
+    </div>
+  } @empty {
+    <p class="text-center text-muted mt-4">No books available</p>
+  }
+
+  <router-outlet></router-outlet>
+</div>
